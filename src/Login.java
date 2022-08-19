@@ -53,7 +53,7 @@ public class Login extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         BT_NoRegistrado = new javax.swing.JButton();
         BT_VisualizarPassword = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BT_Ingresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -98,16 +98,16 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Ingresar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BT_Ingresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BT_Ingresar.setText("Ingresar");
+        BT_Ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                BT_IngresarMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BT_Ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BT_IngresarActionPerformed(evt);
             }
         });
 
@@ -128,7 +128,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BT_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TF_NombreUsuario)
@@ -161,7 +161,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addComponent(jLabel3)))
                 .addGap(36, 36, 36)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BT_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(BT_NoRegistrado)
                 .addContainerGap())
@@ -183,35 +183,37 @@ public class Login extends javax.swing.JFrame {
 
     private void TF_NombreUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TF_NombreUsuarioMouseClicked
         // TODO add your handling code here:
-        if(TF_NombreUsuario.getText().equals("Ingrese su nombre de Usuario")){
+        if(TF_NombreUsuario.getText().contains("Ingrese su nombre de Usuario")){
             TF_NombreUsuario.setText("");
             TF_NombreUsuario.setForeground(Color.black);
         }
     }//GEN-LAST:event_TF_NombreUsuarioMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BT_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BT_IngresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BT_IngresarActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void BT_IngresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_IngresarMouseClicked
         // TODO add your handling code here:
-        setVisible(false);
+        
+        
         for (int i = 0; i < Usuarios.size(); i++) {
-            if ( ((String) TF_NombreUsuario.getText() ).equals(Usuarios.get(i).getNombre()) && PF_Password.getPassword() == (Usuarios.get(i).getPassword())) {
+            if ( TF_NombreUsuario.getText().equals(Usuarios.get(i).getNombre()) && PF_Password.getPassword().equals(Usuarios.get(i).getPassword())) {
                 Juego juego = new Juego();
                 juego.setTitle("Bienvenido - "+TF_NombreUsuario.getText());
                 juego.setVisible(true);
-                System.out.println("Ingresado");
+                setVisible(false);
             }
         }
-
-    }//GEN-LAST:event_jButton1MouseClicked
+        
+        
+    }//GEN-LAST:event_BT_IngresarMouseClicked
 
     private void BT_NoRegistradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_NoRegistradoMouseClicked
         // TODO add your handling code here:
         int resp = JOptionPane.showConfirmDialog(this, "¿Seguro que desea crear una Cuenta nueva con esta información?");
         if(resp == 0){
-            if(TF_NombreUsuario.getText().isEmpty()){
+            if(TF_NombreUsuario.getText().isEmpty() || TF_NombreUsuario.getText().equals("Ingrese su nombre de Usuario")){
                 JOptionPane.showMessageDialog(this, "");
             }else if(PF_Password.getPassword().equals("")){
                 JOptionPane.showMessageDialog(this, "");
@@ -272,11 +274,11 @@ public class Login extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BT_Ingresar;
     private javax.swing.JButton BT_NoRegistrado;
     private javax.swing.JButton BT_VisualizarPassword;
     private javax.swing.JPasswordField PF_Password;
     private javax.swing.JTextField TF_NombreUsuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

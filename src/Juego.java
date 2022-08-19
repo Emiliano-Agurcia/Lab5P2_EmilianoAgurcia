@@ -28,8 +28,6 @@ public class Juego extends javax.swing.JFrame {
         Armas.add(new Arma("Sniper", 80, 90));
         Armas.add(new Arma("Barrel Shotgun", 90, 20));
         
-        
-        
         Personajes.add(new Personaje("Daku", 200, 100, Armas.get(0)));
         DefaultComboBoxModel mCB_SelectPersonaje = (DefaultComboBoxModel) CB_SelectPersonaje.getModel();
         mCB_SelectPersonaje.addElement(Personajes.get(0));
@@ -63,7 +61,7 @@ public class Juego extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         BT_Comenzar = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TA_Juego = new javax.swing.JTextArea();
         FTF_Index = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -152,10 +150,16 @@ public class Juego extends javax.swing.JFrame {
         BT_Comenzar.setForeground(new java.awt.Color(204, 204, 204));
         BT_Comenzar.setText("Comenzar");
         BT_Comenzar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BT_Comenzar.setOpaque(true);
+        BT_Comenzar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BT_ComenzarMouseClicked(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TA_Juego.setColumns(20);
+        TA_Juego.setRows(5);
+        jScrollPane1.setViewportView(TA_Juego);
 
         jLabel12.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel12.setText("Indice a atacar");
@@ -175,7 +179,6 @@ public class Juego extends javax.swing.JFrame {
                 .addGap(85, 85, 85)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,8 +186,9 @@ public class Juego extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(FTF_Index, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(253, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1032, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,6 +428,11 @@ public class Juego extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BT_CrearArmaMouseClicked
 
+    private void BT_ComenzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_ComenzarMouseClicked
+        // TODO add your handling code here:
+        //TA_Juego.append();
+    }//GEN-LAST:event_BT_ComenzarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -471,6 +480,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField FTF_Index;
     private javax.swing.JFormattedTextField FTF_Personaje_Escudo;
     private javax.swing.JFormattedTextField FTF_Personaje_Vida;
+    private javax.swing.JTextArea TA_Juego;
     private javax.swing.JTextField TF_Arma_Nombre;
     private javax.swing.JTextField TF_Personaje_Nombre;
     private javax.swing.JButton jButton1;
@@ -494,6 +504,5 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
