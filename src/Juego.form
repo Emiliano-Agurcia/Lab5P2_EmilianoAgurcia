@@ -230,6 +230,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear Personaje"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BT_CrearPersonajeMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="TF_Personaje_Nombre">
             </Component>
@@ -312,6 +315,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear Arma"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BT_CrearArmaMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="FTF_Arma_Precision">
               <Properties>

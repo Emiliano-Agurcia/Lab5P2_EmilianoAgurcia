@@ -1,3 +1,8 @@
+
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,12 +14,23 @@
  * @author emili
  */
 public class Juego extends javax.swing.JFrame {
-
+    //Atributos
+    ArrayList <Personaje> Personajes = new ArrayList();
+    ArrayList <Arma> Armas = new ArrayList();
+    //Fin Atributos
     /**
      * Creates new form Juego
      */
     public Juego() {
         initComponents();
+        
+        //PREDETERMINADOS
+        Personajes.add(new Personaje("Daku", 200, 100));
+        Armas.add(new Arma("Sniper", 80, 90));
+        Armas.add(new Arma("Barrel Shotgun", 90, 20));
+        //FIN PREDETERMINADOS
+        
+        
     }
 
     /**
@@ -90,6 +106,11 @@ public class Juego extends javax.swing.JFrame {
         jLabel5.setText("Tipo");
 
         BT_CrearPersonaje.setText("Crear Personaje");
+        BT_CrearPersonaje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BT_CrearPersonajeMouseClicked(evt);
+            }
+        });
 
         CB_Personaje_Tipo.setModel(new javax.swing.DefaultComboBoxModel<>());
 
@@ -115,6 +136,11 @@ public class Juego extends javax.swing.JFrame {
         jLabel10.setText("Daño");
 
         BT_CrearArma.setText("Crear Arma");
+        BT_CrearArma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BT_CrearArmaMouseClicked(evt);
+            }
+        });
 
         FTF_Arma_Precision.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("###"))));
 
@@ -221,6 +247,39 @@ public class Juego extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BT_CrearPersonajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_CrearPersonajeMouseClicked
+        // TODO add your handling code here:
+        
+        try {
+            if(CB_Personaje_Tipo.getSelectedItem() instanceof Medico){
+                Personajes.add( new Medico(TF_Personaje_Nombre.getText(), FTF_Personaje_Vida.getText(), FTF_Personaje_Escudo.getText() ));
+            }else if(CB_Personaje_Tipo.getSelectedItem() instanceof Rastreador){
+                Personajes.add(new Rastreador(TF_Personaje_Nombre.getText(), FTF_Personaje_Vida.getText(), FTF_Personaje_Escudo.getText()));
+            }else{
+                Personajes.add(new Fortaleza(TF_Personaje_Nombre.getText(), FTF_Personaje_Vida.getText(), FTF_Personaje_Escudo.getText());
+            }    
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Verifique que haya llenado todos los espacios");
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_BT_CrearPersonajeMouseClicked
+
+    private void BT_CrearArmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_CrearArmaMouseClicked
+        // TODO add your handling code here:
+        try {
+            Armas.add(new Arma(TF_Arma_Nombre.getText(), FTF_Arma_Damage.getText(), FTF_Arma_Precision.getText()));
+            TF_Arma_Nombre.setText("");
+            FTF_Arma_Damage.setText("");
+            FTF_Arma_Precision.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Verifique que haya llenado todos los espacios");
+        }
+        
+    }//GEN-LAST:event_BT_CrearArmaMouseClicked
 
     /**
      * @param args the command line arguments

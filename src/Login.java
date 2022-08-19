@@ -18,8 +18,7 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
         //Atributor
         ArrayList <Jugador> Usuarios = new ArrayList();
-        ArrayList <Personaje> Personajes = new ArrayList();
-        ArrayList <Arma> Armas = new ArrayList();
+        
         //Fin Atributos
         
     /**
@@ -31,8 +30,6 @@ public class Login extends javax.swing.JFrame {
         
         //PREDETERMINADOS
         Usuarios.add(new Jugador("Emile", 1, "Daku04"));
-        Personajes.add(new Personaje("Daku", 200, 100));
-        Armas.add(new Arma("Sniper", 80, 90));
         //FIN PREDETERMINADOS
         
     }
