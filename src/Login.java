@@ -195,7 +195,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-
+        setVisible(false);
         for (int i = 0; i < Usuarios.size(); i++) {
             if ( ((String) TF_NombreUsuario.getText() ).equals(Usuarios.get(i).getNombre()) && PF_Password.getPassword() == (Usuarios.get(i).getPassword())) {
                 Juego juego = new Juego();
@@ -226,6 +226,8 @@ public class Login extends javax.swing.JFrame {
                 Juego juego = new Juego();
                 juego.setTitle("Bienvenido - "+TF_NombreUsuario.getText());
                 juego.setVisible(true);
+                
+                setVisible(false);
             }
         }else if(resp == 1){
             
