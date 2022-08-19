@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
         //Atributor
         ArrayList <Jugador> Usuarios = new ArrayList();
+        ArrayList <Personaje> Personajes = new ArrayList();
+        ArrayList <Arma> Armas = new ArrayList();
         //Fin Atributos
         
     /**
@@ -29,8 +31,9 @@ public class Login extends javax.swing.JFrame {
         
         //PREDETERMINADOS
         Usuarios.add(new Jugador("Emile", 1, "Daku04"));
+        Personajes.add(new Personaje("Daku", 200, 100));
+        Armas.add(new Arma("Sniper", 80, 90));
         //FIN PREDETERMINADOS
-        
         
     }
 
@@ -188,16 +191,15 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
-        
-        if(Usuarios.contains(TF_NombreUsuario.getText()) || Usuarios.contains(PF_Password.getPassword())){
-            for (int i = 0; i < Usuarios.size(); i++) {
-                if( TF_NombreUsuario.getText().equals( Usuarios.get(i).getNombre() ) && PF_Password.getPassword().equals( Usuarios.get(i).getPassword() ) ){
-                    Juego juego = new Juego();
-                    juego.setVisible(true);
-                    System.out.println("Hola");
-                }
-            }    
+
+        for (int i = 0; i < Usuarios.size(); i++) {
+            if ( ((String) TF_NombreUsuario.getText() ).equals(Usuarios.get(i).getNombre()) && PF_Password.getPassword().equals(Usuarios.get(i).getPassword())) {
+                Juego juego = new Juego();
+                juego.setVisible(true);
+                System.out.println("Ingresado");
+            }
         }
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**

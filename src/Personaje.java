@@ -10,14 +10,14 @@
  */
 public class Personaje {
     private String Nombre;
-    private double Vida;
-    private double Escudo;
+    private int Vida;
+    private int Escudo;
     private Arma Arma = new Arma();
 
     public Personaje() {
     }
 
-    public Personaje(String Nombre, double Vida, double Escudo) {
+    public Personaje(String Nombre, int Vida, int Escudo) {
         this.Nombre = Nombre;
         this.Vida = Vida;
         this.Escudo = Escudo;
@@ -35,7 +35,7 @@ public class Personaje {
         return Vida;
     }
 
-    public void setVida(double Vida) {
+    public void setVida(int Vida) {
         this.Vida = Vida;
     }
 
@@ -43,7 +43,7 @@ public class Personaje {
         return Escudo;
     }
 
-    public void setEscudo(double Escudo) {
+    public void setEscudo(int Escudo) {
         this.Escudo = Escudo;
     }
 

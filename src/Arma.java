@@ -10,13 +10,13 @@
  */
 public class Arma {
     private String Nombre;
-    private double Damage;
+    private int Damage;
     private int Precision;
 
     public Arma() {
     }
 
-    public Arma(String Nombre, double Damage, int Precision) {
+    public Arma(String Nombre, int Damage, int Precision) {
         this.Nombre = Nombre;
         this.Damage = Damage;
         this.Precision = Precision;
@@ -34,7 +34,7 @@ public class Arma {
         return Damage;
     }
 
-    public void setDamage(double Damage) {
+    public void setDamage(int Damage) {
         this.Damage = Damage;
     }
 
