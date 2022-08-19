@@ -48,7 +48,7 @@ public class Arma {
 
     @Override
     public String toString() {
-        return "Arma{" + "Nombre=" + Nombre + ", Damage=" + Damage + ", Precision=" + Precision + '}';
+        return "Nombre: " + Nombre + ", Daño: " + Damage + ", Precisión: " + Precision ;
     }
     
     

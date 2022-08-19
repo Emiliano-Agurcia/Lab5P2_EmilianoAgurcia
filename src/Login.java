@@ -2,7 +2,7 @@
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import java.util.Random;
 
 
 /*
@@ -16,10 +16,11 @@ import javax.swing.JOptionPane;
  * @author emili
  */
 public class Login extends javax.swing.JFrame {
-        //Atributor
-        ArrayList <Jugador> Usuarios = new ArrayList();
-        
-        //Fin Atributos
+    Random random = new Random();
+    //Atributor
+    ArrayList <Jugador> Usuarios = new ArrayList();
+    ArrayList <Integer> IDs = new ArrayList();
+    //Fin Atributos
         
     /**
      * Creates new form Login
@@ -29,7 +30,8 @@ public class Login extends javax.swing.JFrame {
         
         
         //PREDETERMINADOS
-        Usuarios.add(new Jugador("Emile", 1, "Daku04"));
+        char[] Password = {'1'};
+        Usuarios.add(new Jugador("Emile", 1, Password));
         //FIN PREDETERMINADOS
         
     }
@@ -56,7 +58,7 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel1.setText("Login");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -80,6 +82,11 @@ public class Login extends javax.swing.JFrame {
 
         BT_NoRegistrado.setText("Aún no estoy registrado");
         BT_NoRegistrado.setToolTipText("Crear Usuario Automáticamente");
+        BT_NoRegistrado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BT_NoRegistradoMouseClicked(evt);
+            }
+        });
 
         BT_VisualizarPassword.setText("Visualizar");
         BT_VisualizarPassword.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,14 +197,41 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         for (int i = 0; i < Usuarios.size(); i++) {
-            if ( ((String) TF_NombreUsuario.getText() ).equals(Usuarios.get(i).getNombre()) && PF_Password.getPassword().equals(Usuarios.get(i).getPassword())) {
+            if ( ((String) TF_NombreUsuario.getText() ).equals(Usuarios.get(i).getNombre()) && PF_Password.getPassword() == (Usuarios.get(i).getPassword())) {
                 Juego juego = new Juego();
+                juego.setTitle("Bienvenido - "+TF_NombreUsuario.getText());
                 juego.setVisible(true);
                 System.out.println("Ingresado");
             }
         }
 
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void BT_NoRegistradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_NoRegistradoMouseClicked
+        // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(this, "¿Seguro que desea crear una Cuenta nueva con esta información?");
+        if(resp == 0){
+            if(TF_NombreUsuario.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "");
+            }else if(PF_Password.getPassword().equals("")){
+                JOptionPane.showMessageDialog(this, "");
+            }else{
+                int ID = 1+random.nextInt(1000);
+                while(IDs.contains(ID)){
+                    ID = 1+random.nextInt(1000);
+                }
+                IDs.add(ID);
+                
+                Usuarios.add(new Jugador(TF_NombreUsuario.getText(), ID, PF_Password.getPassword() ));
+                Juego juego = new Juego();
+                juego.setTitle("Bienvenido - "+TF_NombreUsuario.getText());
+                juego.setVisible(true);
+            }
+        }else if(resp == 1){
+            
+        }
+        
+    }//GEN-LAST:event_BT_NoRegistradoMouseClicked
 
     /**
      * @param args the command line arguments

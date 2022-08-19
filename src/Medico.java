@@ -14,8 +14,8 @@ public class Medico extends Personaje{
         super();
     }
 
-    public Medico(String Nombre, double Vida, double Escudo) {
-        super(Nombre, Vida, Escudo);
+    public Medico(String Nombre, int Vida, int Escudo, Arma Arma) {
+        super(Nombre, Vida, Escudo, Arma);
     }
     
     @Override

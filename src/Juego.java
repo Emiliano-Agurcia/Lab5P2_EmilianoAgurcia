@@ -25,13 +25,25 @@ public class Juego extends javax.swing.JFrame {
         initComponents();
         
         //PREDETERMINADOS
-        Personajes.add(new Personaje("Daku", 200, 100));
         Armas.add(new Arma("Sniper", 80, 90));
         Armas.add(new Arma("Barrel Shotgun", 90, 20));
+        
+        
+        
+        Personajes.add(new Personaje("Daku", 200, 100, Armas.get(0)));
+        DefaultComboBoxModel mCB_SelectPersonaje = (DefaultComboBoxModel) CB_SelectPersonaje.getModel();
+        mCB_SelectPersonaje.addElement(Personajes.get(0));
+        
+        DefaultComboBoxModel mCB_Personaje_Arma = (DefaultComboBoxModel) CB_Personaje_Arma.getModel();
+        mCB_Personaje_Arma.addElement(Armas.get(0));
+        mCB_Personaje_Arma.addElement(Armas.get(1));
+        
+        DefaultComboBoxModel mCB_Personaje_Tipo = (DefaultComboBoxModel) CB_Personaje_Tipo.getModel();
+        mCB_Personaje_Tipo.addElement("Medico");
+        mCB_Personaje_Tipo.addElement("Fortaleza");
+        mCB_Personaje_Tipo.addElement("Rastreador");
         //FIN PREDETERMINADOS
-        
-        
-    }
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +56,10 @@ public class Juego extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        CB_SelectPersonaje = new javax.swing.JComboBox<>();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -69,15 +85,57 @@ public class Juego extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel11.setFont(new java.awt.Font("Microsoft JhengHei", 1, 18)); // NOI18N
+        jLabel11.setText("Seleccionar Personaje");
+
+        CB_SelectPersonaje.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        CB_SelectPersonaje.setModel(new javax.swing.DefaultComboBoxModel<>());
+
+        jSeparator2.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator2.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator2.setOpaque(true);
+
+        jSeparator3.setBackground(new java.awt.Color(0, 153, 255));
+        jSeparator3.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator3.setOpaque(true);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1190, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(378, Short.MAX_VALUE)
+                .addComponent(CB_SelectPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(357, 357, 357))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(495, 495, 495))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(563, Short.MAX_VALUE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(550, 550, 550)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(225, 225, 225)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(CB_SelectPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(399, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(272, 272, 272)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(465, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Seleccionar", jPanel1);
@@ -250,18 +308,36 @@ public class Juego extends javax.swing.JFrame {
 
     private void BT_CrearPersonajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_CrearPersonajeMouseClicked
         // TODO add your handling code here:
+        DefaultComboBoxModel mCB_SelectPersonaje = (DefaultComboBoxModel) CB_SelectPersonaje.getModel();
         
-        try {
-            if(CB_Personaje_Tipo.getSelectedItem() instanceof Medico){
-                Personajes.add( new Medico(TF_Personaje_Nombre.getText(), FTF_Personaje_Vida.getText(), FTF_Personaje_Escudo.getText() ));
-            }else if(CB_Personaje_Tipo.getSelectedItem() instanceof Rastreador){
-                Personajes.add(new Rastreador(TF_Personaje_Nombre.getText(), FTF_Personaje_Vida.getText(), FTF_Personaje_Escudo.getText()));
-            }else{
-                Personajes.add(new Fortaleza(TF_Personaje_Nombre.getText(), FTF_Personaje_Vida.getText(), FTF_Personaje_Escudo.getText());
-            }    
-        } catch (Exception e) {
+        
+        if(TF_Personaje_Nombre.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Verifique que haya llenado todos los espacios");
+        }else if(Integer.parseInt(FTF_Personaje_Vida.getText()) < 1 || Integer.parseInt(FTF_Personaje_Vida.getText()) > 100){
+            JOptionPane.showMessageDialog(this, "La vida debe estar entre 1-100");
+        }else if(Integer.parseInt(FTF_Personaje_Escudo.getText()) < 0 || Integer.parseInt(FTF_Personaje_Escudo.getText()) > 100){
+            JOptionPane.showMessageDialog(this, "El escudo debe estar entre 0-100");
+        }else{
+            try {
+                if(CB_Personaje_Tipo.getSelectedItem().equals("Medico") ){
+                    Personajes.add(new Medico(TF_Personaje_Nombre.getText(), Integer.parseInt(FTF_Personaje_Vida.getText()), Integer.parseInt(FTF_Personaje_Escudo.getText()), (Arma) CB_Personaje_Arma.getSelectedItem() ));
+                    mCB_SelectPersonaje.addElement(new Medico(TF_Personaje_Nombre.getText(), Integer.parseInt(FTF_Personaje_Vida.getText()), Integer.parseInt(FTF_Personaje_Escudo.getText()), (Arma) CB_Personaje_Arma.getSelectedItem() ));
+                }else if(CB_Personaje_Tipo.getSelectedItem().equals("Rastreador")){
+                    Personajes.add(new Rastreador(TF_Personaje_Nombre.getText(), Integer.parseInt(FTF_Personaje_Vida.getText()), Integer.parseInt(FTF_Personaje_Escudo.getText()), (Arma) CB_Personaje_Arma.getSelectedItem()));
+                    mCB_SelectPersonaje.addElement(new Rastreador(TF_Personaje_Nombre.getText(), Integer.parseInt(FTF_Personaje_Vida.getText()), Integer.parseInt(FTF_Personaje_Escudo.getText()), (Arma) CB_Personaje_Arma.getSelectedItem()));
+                }else{
+                    Personajes.add(new Fortaleza(TF_Personaje_Nombre.getText(), Integer.parseInt(FTF_Personaje_Vida.getText()), Integer.parseInt(FTF_Personaje_Escudo.getText()), (Arma) CB_Personaje_Arma.getSelectedItem()));
+                    mCB_SelectPersonaje.addElement(new Fortaleza(TF_Personaje_Nombre.getText(), Integer.parseInt(FTF_Personaje_Vida.getText()), Integer.parseInt(FTF_Personaje_Escudo.getText()), (Arma) CB_Personaje_Arma.getSelectedItem()));
+                }    
+                JOptionPane.showMessageDialog(this, "Personaje Creado Exitosamente");
+                TF_Personaje_Nombre.setText("");
+                FTF_Personaje_Vida.setText("");
+                FTF_Personaje_Escudo.setText("");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Verifique que haya llenado todos los espacios");
+            }    
         }
+        
         
         
         
@@ -270,14 +346,29 @@ public class Juego extends javax.swing.JFrame {
 
     private void BT_CrearArmaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_CrearArmaMouseClicked
         // TODO add your handling code here:
-        try {
-            Armas.add(new Arma(TF_Arma_Nombre.getText(), FTF_Arma_Damage.getText(), FTF_Arma_Precision.getText()));
-            TF_Arma_Nombre.setText("");
-            FTF_Arma_Damage.setText("");
-            FTF_Arma_Precision.setText("");
-        } catch (Exception e) {
+        
+        if(TF_Arma_Nombre.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Verifique que haya llenado todos los espacios");
+        }else if(Integer.parseInt(FTF_Arma_Precision.getText()) < 1 || Integer.parseInt(FTF_Arma_Precision.getText()) > 100){
+            JOptionPane.showMessageDialog(this, "La precisión debe estar entre 1-100");
+        }else if(Integer.parseInt(FTF_Arma_Damage.getText()) < 1 || Integer.parseInt(FTF_Arma_Damage.getText()) > 100){
+            JOptionPane.showMessageDialog(this, "El daño debe estar entre 1-100");
+        }else{
+            try {
+                Armas.add(new Arma(TF_Arma_Nombre.getText(), Integer.parseInt(FTF_Arma_Damage.getText()), Integer.parseInt(FTF_Arma_Precision.getText())));
+
+                DefaultComboBoxModel mCB_Personaje_Arma = (DefaultComboBoxModel) CB_Personaje_Arma.getModel();
+                mCB_Personaje_Arma.addElement(new Arma(TF_Arma_Nombre.getText(), Integer.parseInt(FTF_Arma_Damage.getText()), Integer.parseInt(FTF_Arma_Precision.getText())));
+
+                JOptionPane.showMessageDialog(this, "Arma Creada Exitosamente");
+                TF_Arma_Nombre.setText("");
+                FTF_Arma_Damage.setText("");
+                FTF_Arma_Precision.setText("");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Verifique que haya llenado todos los espacios");
+            }    
         }
+        
         
     }//GEN-LAST:event_BT_CrearArmaMouseClicked
 
@@ -321,6 +412,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JButton BT_CrearPersonaje;
     private javax.swing.JComboBox<String> CB_Personaje_Arma;
     private javax.swing.JComboBox<String> CB_Personaje_Tipo;
+    private javax.swing.JComboBox<String> CB_SelectPersonaje;
     private javax.swing.JFormattedTextField FTF_Arma_Damage;
     private javax.swing.JFormattedTextField FTF_Arma_Precision;
     private javax.swing.JFormattedTextField FTF_Personaje_Escudo;
@@ -329,6 +421,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JTextField TF_Personaje_Nombre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -340,6 +433,8 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

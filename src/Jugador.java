@@ -11,17 +11,19 @@
 public class Jugador {
     private String Nombre;
     private int ID;
-    private String Password;
+    private char[] Password;
     private Personaje Personaje = new Personaje();
 
     public Jugador() {
     }
 
-    public Jugador(String Nombre, int ID, String Password) {
+    public Jugador(String Nombre, int ID, char[] Password) {
         this.Nombre = Nombre;
         this.ID = ID;
         this.Password = Password;
     }
+
+    
 
     public String getNombre() {
         return Nombre;
@@ -39,13 +41,15 @@ public class Jugador {
         this.ID = ID;
     }
 
-    public String getPassword() {
+    public char[] getPassword() {
         return Password;
     }
 
-    public void setPassword(String Password) {
+    public void setPassword(char[] Password) {
         this.Password = Password;
     }
+
+    
 
     public Personaje getPersonaje() {
         return Personaje;

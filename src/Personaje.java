@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -17,10 +20,11 @@ public class Personaje {
     public Personaje() {
     }
 
-    public Personaje(String Nombre, int Vida, int Escudo) {
+    public Personaje(String Nombre, int Vida, int Escudo, Arma Arma) {
         this.Nombre = Nombre;
         this.Vida = Vida;
         this.Escudo = Escudo;
+        this.Arma = Arma;
     }
 
     public String getNombre() {
@@ -37,6 +41,7 @@ public class Personaje {
 
     public void setVida(int Vida) {
         this.Vida = Vida;
+        
     }
 
     public double getEscudo() {
@@ -49,7 +54,7 @@ public class Personaje {
 
     @Override
     public String toString() {
-        return "Personaje{" + "Nombre: " + Nombre + ", Vida: " + Vida + "%, Escudo: " + Escudo + '}';
+        return "Nombre: " + Nombre + ", Vida: " + Vida + ", Escudo: " + Escudo;
     }
     
     

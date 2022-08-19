@@ -14,8 +14,8 @@ public class Rastreador extends Personaje{
         super();
     }
 
-    public Rastreador(String Nombre, double Vida, double Escudo) {
-        super(Nombre, Vida, Escudo);
+    public Rastreador(String Nombre, int Vida, int Escudo, Arma Arma) {
+        super(Nombre, Vida, Escudo, Arma);
     }
 
     @Override

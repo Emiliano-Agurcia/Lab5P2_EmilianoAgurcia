@@ -14,8 +14,8 @@ public class Fortaleza extends Personaje{
         super();
     }
 
-    public Fortaleza(String Nombre, double Vida, double Escudo) {
-        super(Nombre, Vida, Escudo);
+    public Fortaleza(String Nombre, int Vida, int Escudo, Arma Arma) {
+        super(Nombre, Vida, Escudo, Arma);
     }
     
     @Override
