@@ -9,5 +9,13 @@
  * @author emili
  */
 public class Medico extends Personaje{
+
+    public Medico() {
+        super();
+    }
+
+    public Medico(String Nombre, double Vida, double Escudo) {
+        super(Nombre, Vida, Escudo);
+    }
     
 }

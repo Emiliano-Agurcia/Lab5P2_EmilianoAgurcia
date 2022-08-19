@@ -9,5 +9,13 @@
  * @author emili
  */
 public class Rastreador extends Personaje{
+
+    public Rastreador() {
+        super();
+    }
+
+    public Rastreador(String Nombre, double Vida, double Escudo) {
+        super(Nombre, Vida, Escudo);
+    }
     
 }

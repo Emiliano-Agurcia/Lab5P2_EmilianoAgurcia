@@ -12,5 +12,53 @@ public class Jugador {
     private String Nombre;
     private int ID;
     private String Password;
-    private Personaje = new Personaje();
+    private Personaje Personaje = new Personaje();
+
+    public Jugador() {
+    }
+
+    public Jugador(String Nombre, int ID, String Password) {
+        this.Nombre = Nombre;
+        this.ID = ID;
+        this.Password = Password;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
+    public Personaje getPersonaje() {
+        return Personaje;
+    }
+
+    public void setPersonaje(Personaje Personaje) {
+        this.Personaje = Personaje;
+    }
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "Nombre=" + Nombre + ", ID=" + ID + ", Password=" + Password + ", Personaje=" + Personaje + '}';
+    }
+    
+    
 }

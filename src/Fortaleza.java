@@ -9,5 +9,14 @@
  * @author emili
  */
 public class Fortaleza extends Personaje{
+
+    public Fortaleza() {
+        super();
+    }
+
+    public Fortaleza(String Nombre, double Vida, double Escudo) {
+        super(Nombre, Vida, Escudo);
+    }
+    
     
 }
