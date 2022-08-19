@@ -49,7 +49,7 @@ public class Personaje {
 
     @Override
     public String toString() {
-        return "Personaje{" + "Nombre=" + Nombre + ", Vida=" + Vida + ", Escudo=" + Escudo + '}';
+        return "Personaje{" + "Nombre: " + Nombre + ", Vida: " + Vida + "%, Escudo: " + Escudo + '}';
     }
     
     

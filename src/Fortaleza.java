@@ -18,5 +18,8 @@ public class Fortaleza extends Personaje{
         super(Nombre, Vida, Escudo);
     }
     
-    
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

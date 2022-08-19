@@ -17,5 +17,10 @@ public class Rastreador extends Personaje{
     public Rastreador(String Nombre, double Vida, double Escudo) {
         super(Nombre, Vida, Escudo);
     }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
     
 }
