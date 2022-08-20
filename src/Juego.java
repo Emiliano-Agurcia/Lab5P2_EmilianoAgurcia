@@ -446,7 +446,10 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         Date TiempoInicio =  new Date();
         
-        TA_Juego.append("El Jugador: "+ Login.getIngresado().getNombre() + " ha ingresado a la partida\n");
+        Jugador Usuario = Login.getIngresado();
+        Usuario.setPersonaje( (Personaje) CB_SelectPersonaje.getSelectedItem());
+        
+        TA_Juego.append("El Jugador: ["+ Usuario.getID() +"]"+ Usuario.getNombre() + " ha ingresado a la partida\n");
         
         for (int i = 0; i < 61; i++) {
         //ID
@@ -472,7 +475,7 @@ public class Juego extends javax.swing.JFrame {
         //Fin Password    
             Jugador Bot = new Jugador(Nombre, ID, Password);
             Login.getUsuarios().add(Bot);
-            TA_Juego.append("El Jugador: "+ Bot.getNombre() + " ha ingresado a la partida\n");
+            TA_Juego.append("El Jugador: ["+ Bot.getID() +"]"+ Bot.getNombre() + " ha ingresado a la partida\n");
         }
         
         
@@ -480,6 +483,7 @@ public class Juego extends javax.swing.JFrame {
 
     private void BT_AtacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_AtacarMouseClicked
         // TODO add your handling code here:
+        
         Jugador Usuario = Login.getIngresado();
         Usuario.setPersonaje( (Personaje) CB_SelectPersonaje.getSelectedItem());
         

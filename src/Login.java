@@ -223,9 +223,11 @@ public class Login extends javax.swing.JFrame {
         
         for (int i = 0; i < Usuarios.size(); i++) {
             if ( TF_NombreUsuario.getText().equals(Usuarios.get(i).getNombre()) && PF_Password.getPassword().equals(Usuarios.get(i).getPassword())) {
+                
                 Ingresado.setNombre(Usuarios.get(i).getNombre());
                 Ingresado.setID(Usuarios.get(i).getID());
                 Ingresado.setPassword(Usuarios.get(i).getPassword());
+                
                 Juego juego = new Juego();
                 juego.setTitle("Bienvenido - "+TF_NombreUsuario.getText());
                 juego.setVisible(true);
