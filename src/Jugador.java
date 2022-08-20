@@ -12,7 +12,12 @@ public class Jugador {
     private String Nombre;
     private int ID;
     private char[] Password;
-    private Personaje Personaje = new Personaje();
+    private Personaje Personaje = new Personaje() {
+        @Override
+        public void Atacar(Personaje Usuario, Arma arma, Personaje Enemigo, int DamageTaken) {
+            Personaje.Atacar(Usuario, arma, Enemigo, DamageTaken);
+        }
+    };
 
     public Jugador() {
     }

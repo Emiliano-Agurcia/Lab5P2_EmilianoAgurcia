@@ -31,8 +31,8 @@ public class Login extends javax.swing.JFrame {
         
         
         //PREDETERMINADOS
-        char[] Password = {'1'};
-        Usuarios.add(new Jugador("Emile", 1, Password));
+        char[] Password = {'1','2'};
+        Usuarios.add(new Jugador("Lechuga", 543, Password));
         //FIN PREDETERMINADOS
     }
 

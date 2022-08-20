@@ -22,5 +22,15 @@ public class Rastreador extends Personaje{
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public void Atacar(Personaje Usuario, Arma arma, Personaje Enemigo, int DamageTaken) {
+        if(Enemigo instanceof Medico || Enemigo instanceof Fortaleza){
+            arma.setDamage( (int) arma.getDamage()+10);
+        }
+        arma.setPrecision(arma.getPrecision()+10);
+    }
+
+    
     
 }

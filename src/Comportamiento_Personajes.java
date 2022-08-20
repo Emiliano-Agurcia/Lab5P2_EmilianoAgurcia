@@ -9,5 +9,5 @@
  * @author emili
  */
 public interface Comportamiento_Personajes {
-    public void Atacar();
+    public void Atacar(Personaje Usuario, Arma arma, Personaje Enemigo, int DamageTaken);
 }

@@ -22,4 +22,17 @@ public class Fortaleza extends Personaje{
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public void Atacar(Personaje Usuario, Arma arma, Personaje Enemigo, int DamageTaken) {
+        if(Enemigo instanceof Medico){
+            arma.setDamage( (int) arma.getDamage()+10);
+        }
+        
+        DamageTaken -= 100/0.15;
+    }
+
+
+    
+
 }

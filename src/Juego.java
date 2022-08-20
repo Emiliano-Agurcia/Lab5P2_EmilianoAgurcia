@@ -35,7 +35,7 @@ public class Juego extends javax.swing.JFrame {
         Armas.add(new Arma("Sniper", 80, 90));
         Armas.add(new Arma("Barrel Shotgun", 90, 20));
         
-        Personajes.add(new Personaje("Daku", 200, 100, Armas.get(0)));
+        Personajes.add(new Rastreador("Daku", 200, 100, Armas.get(0)));
         DefaultComboBoxModel mCB_SelectPersonaje = (DefaultComboBoxModel) CB_SelectPersonaje.getModel();
         mCB_SelectPersonaje.addElement(Personajes.get(0));
         
@@ -485,24 +485,17 @@ public class Juego extends javax.swing.JFrame {
         
         int index = Integer.parseInt(FTF_Index.getText());
         
-        if(Login.getIDs().contains(index)){
-            
-        }
-        
-        for (int i = 0; i < Login.getUsuarios().size(); i++) {
-            
-        }
-        
-    }//GEN-LAST:event_BT_AtacarMouseClicked
-
-    
-    public static int BinariaRec(ArrayList <Jugador> Usuarios, int index){
-        if(index == Usuarios.get(index).getID() ){
-            return 
+        if(!Login.getIDs().contains(index)){
+            JOptionPane.showMessageDialog(this, "Disparo fallido: ID incorrecto");
         }else{
             
         }
-    } 
+    }//GEN-LAST:event_BT_AtacarMouseClicked
+
+    
+//    public static int BinariaRec(ArrayList <Jugador> Usuarios, int index){
+//        
+//    } 
     /**
      * @param args the command line arguments
      */
