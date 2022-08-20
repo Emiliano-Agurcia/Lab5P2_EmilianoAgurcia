@@ -171,7 +171,7 @@ public class Juego extends javax.swing.JFrame {
         FTF_Index.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
 
         jLabel12.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
-        jLabel12.setText("Indice a atacar");
+        jLabel12.setText("Indice de Usuario a atacar");
 
         BT_Atacar.setBackground(new java.awt.Color(197, 30, 30));
         BT_Atacar.setText("Atacar");
@@ -459,15 +459,13 @@ public class Juego extends javax.swing.JFrame {
         
         //Nombre
             String Nombre = "";
-            int NombreSize = 5+random.nextInt(6);
-            for (int j = 0; j < NombreSize; j++) {
+            for (int j = 0; j < 11; j++) {
                 Nombre += (char) random.nextInt();
             }
         //Fin Nombre
         
         //Password
-            int PasswordSize = 5+random.nextInt(6);
-            char[] Password = new char[PasswordSize];
+            char[] Password = new char[10];
             for (int j = 0; j < Password.length; j++) {
                 Password[j] = (char) random.nextInt();
             }
@@ -482,9 +480,29 @@ public class Juego extends javax.swing.JFrame {
 
     private void BT_AtacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_AtacarMouseClicked
         // TODO add your handling code here:
+        Jugador Usuario = Login.getIngresado();
+        Usuario.setPersonaje( (Personaje) CB_SelectPersonaje.getSelectedItem());
+        
+        int index = Integer.parseInt(FTF_Index.getText());
+        
+        if(Login.getIDs().contains(index)){
+            
+        }
+        
+        for (int i = 0; i < Login.getUsuarios().size(); i++) {
+            
+        }
         
     }//GEN-LAST:event_BT_AtacarMouseClicked
 
+    
+    public static int BinariaRec(ArrayList <Jugador> Usuarios, int index){
+        if(index == Usuarios.get(index).getID() ){
+            return 
+        }else{
+            
+        }
+    } 
     /**
      * @param args the command line arguments
      */

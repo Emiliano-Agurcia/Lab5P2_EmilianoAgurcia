@@ -250,7 +250,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Microsoft JhengHei" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Indice a atacar"/>
+                <Property name="text" type="java.lang.String" value="Indice de Usuario a atacar"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="BT_Atacar">

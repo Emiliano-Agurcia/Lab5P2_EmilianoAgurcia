@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author emili
  */
-public class Personaje {
+public abstract class Personaje implements Comportamiento_Personajes{
     private String Nombre;
     private int Vida;
     private int Escudo;
