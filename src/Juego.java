@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class Juego extends javax.swing.JFrame {
     Random random = new Random();
-    Login Login = new Login();
+    Login login = new Login();
     
     //Atributos
     ArrayList <Personaje> Personajes = new ArrayList();
@@ -73,6 +73,7 @@ public class Juego extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         BT_Atacar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -185,6 +186,10 @@ public class Juego extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator1.setOpaque(true);
 
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel13.setText("Mapa: Cañon de los Reyes");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -192,7 +197,10 @@ public class Juego extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel13))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +216,9 @@ public class Juego extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BT_Comenzar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
@@ -446,18 +456,18 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         Date TiempoInicio =  new Date();
         
-        Jugador Usuario = Login.getIngresado();
+        Jugador Usuario = login.getIngresado();
         Usuario.setPersonaje( (Personaje) CB_SelectPersonaje.getSelectedItem());
         
-        TA_Juego.append("El Jugador: ["+ Usuario.getID() +"]"+ Usuario.getNombre() + " ha ingresado a la partida\n");
+        TA_Juego.append("El Jugador: ["+ Usuario.getID() +"]"+ login.getIngresado().getNombre() + " ha ingresado a la partida\n");
         
         for (int i = 0; i < 61; i++) {
         //ID
             int ID = 1 + random.nextInt(1000);
-            while (Login.getIDs().contains(ID)) {
+            while (login.getIDs().contains(ID)) {
                 ID = 1 + random.nextInt(1000);
             }
-            Login.getIDs().add(ID);
+            login.getIDs().add(ID);
         //Fin ID
         
         //Nombre
@@ -474,7 +484,7 @@ public class Juego extends javax.swing.JFrame {
             }
         //Fin Password    
             Jugador Bot = new Jugador(Nombre, ID, Password);
-            Login.getUsuarios().add(Bot);
+            login.getUsuarios().add(Bot);
             TA_Juego.append("El Jugador: ["+ Bot.getID() +"]"+ Bot.getNombre() + " ha ingresado a la partida\n");
         }
         
@@ -484,12 +494,12 @@ public class Juego extends javax.swing.JFrame {
     private void BT_AtacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_AtacarMouseClicked
         // TODO add your handling code here:
         
-        Jugador Usuario = Login.getIngresado();
+        Jugador Usuario = login.getIngresado();
         Usuario.setPersonaje( (Personaje) CB_SelectPersonaje.getSelectedItem());
         
         int index = Integer.parseInt(FTF_Index.getText());
         
-        if(!Login.getIDs().contains(index)){
+        if(!login.getIDs().contains(index)){
             JOptionPane.showMessageDialog(this, "Disparo fallido: ID incorrecto");
         }else{
             
@@ -555,6 +565,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

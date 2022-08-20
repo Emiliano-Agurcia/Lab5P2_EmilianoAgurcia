@@ -241,6 +241,7 @@ public class Login extends javax.swing.JFrame {
     private void BT_NoRegistradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_NoRegistradoMouseClicked
         // TODO add your handling code here:
         int resp = JOptionPane.showConfirmDialog(this, "¿Seguro que desea crear una Cuenta nueva con esta información?");
+        
         if(resp == 0){
             if(TF_NombreUsuario.getText().isEmpty() || TF_NombreUsuario.getText().equals("Ingrese su nombre de Usuario")){
                 JOptionPane.showMessageDialog(this, "Ingrese un Nombre");
