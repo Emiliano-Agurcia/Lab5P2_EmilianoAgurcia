@@ -241,15 +241,19 @@ public class Login extends javax.swing.JFrame {
         int resp = JOptionPane.showConfirmDialog(this, "¿Seguro que desea crear una Cuenta nueva con esta información?");
         if(resp == 0){
             if(TF_NombreUsuario.getText().isEmpty() || TF_NombreUsuario.getText().equals("Ingrese su nombre de Usuario")){
-                JOptionPane.showMessageDialog(this, "");
+                JOptionPane.showMessageDialog(this, "Ingrese un Nombre");
             }else if(PF_Password.getPassword().equals("")){
-                JOptionPane.showMessageDialog(this, "");
+                JOptionPane.showMessageDialog(this, "Ingrese una contraseña");
             }else{
                 int ID = 1+random.nextInt(1000);
                 while(IDs.contains(ID)){
                     ID = 1+random.nextInt(1000);
                 }
                 IDs.add(ID);
+                
+                Ingresado.setNombre(TF_NombreUsuario.getText());
+                Ingresado.setID(ID);
+                Ingresado.setPassword(PF_Password.getPassword());
                 
                 Usuarios.add(new Jugador(TF_NombreUsuario.getText(), ID, PF_Password.getPassword() ));
                 Juego juego = new Juego();

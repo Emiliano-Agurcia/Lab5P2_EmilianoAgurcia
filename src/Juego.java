@@ -446,8 +446,7 @@ public class Juego extends javax.swing.JFrame {
         // TODO add your handling code here:
         Date TiempoInicio =  new Date();
         
-        
-        TA_Juego.append("El Jugador: "+ Login + " ha ingresado a la partida");
+        TA_Juego.append("El Jugador: "+ Login.getIngresado().getNombre() + " ha ingresado a la partida\n");
         
         for (int i = 0; i < 61; i++) {
         //ID
@@ -475,7 +474,7 @@ public class Juego extends javax.swing.JFrame {
         //Fin Password    
             Jugador Bot = new Jugador(Nombre, ID, Password);
             Login.getUsuarios().add(Bot);
-            TA_Juego.append("El Jugador: "+ Bot + " ha ingresado a la partida");
+            TA_Juego.append("El Jugador: "+ Bot.getNombre() + " ha ingresado a la partida\n");
         }
         
         
