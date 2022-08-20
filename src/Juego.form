@@ -170,7 +170,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="FTF_Index" min="-2" pref="116" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Component id="BT_Atacar" min="-2" pref="62" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" alignment="0" min="-2" pref="1032" max="-2" attributes="0"/>
                       </Group>
@@ -190,7 +190,7 @@
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                               <Component id="FTF_Index" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BT_Atacar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jSeparator1" alignment="1" min="-2" pref="3" max="-2" attributes="0"/>
                       </Group>
@@ -239,6 +239,11 @@
               </SubComponents>
             </Container>
             <Component class="javax.swing.JFormattedTextField" name="FTF_Index">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="####" subtype="-1" type="0"/>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
@@ -248,7 +253,7 @@
                 <Property name="text" type="java.lang.String" value="Indice a atacar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="BT_Atacar">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="1e" green="1e" red="c5" type="rgb"/>
@@ -260,6 +265,9 @@
                   </Border>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="BT_AtacarMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
               <Properties>

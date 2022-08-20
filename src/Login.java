@@ -20,6 +20,7 @@ public class Login extends javax.swing.JFrame {
     //Atributor
     ArrayList <Jugador> Usuarios = new ArrayList();
     ArrayList <Integer> IDs = new ArrayList();
+    Jugador Ingresado = new Jugador();
     //Fin Atributos
         
     /**
@@ -33,7 +34,30 @@ public class Login extends javax.swing.JFrame {
         char[] Password = {'1'};
         Usuarios.add(new Jugador("Emile", 1, Password));
         //FIN PREDETERMINADOS
-        
+    }
+
+    public ArrayList<Jugador> getUsuarios() {
+        return Usuarios;
+    }
+
+    public void setUsuarios(ArrayList<Jugador> Usuarios) {
+        this.Usuarios = Usuarios;
+    }
+
+    public ArrayList<Integer> getIDs() {
+        return IDs;
+    }
+
+    public void setIDs(ArrayList<Integer> IDs) {
+        this.IDs = IDs;
+    }
+
+    public Jugador getIngresado() {
+        return Ingresado;
+    }
+
+    public void setIngresado(Jugador Ingresado) {
+        this.Ingresado = Ingresado;
     }
 
     /**
@@ -199,6 +223,9 @@ public class Login extends javax.swing.JFrame {
         
         for (int i = 0; i < Usuarios.size(); i++) {
             if ( TF_NombreUsuario.getText().equals(Usuarios.get(i).getNombre()) && PF_Password.getPassword().equals(Usuarios.get(i).getPassword())) {
+                Ingresado.setNombre(Usuarios.get(i).getNombre());
+                Ingresado.setID(Usuarios.get(i).getID());
+                Ingresado.setPassword(Usuarios.get(i).getPassword());
                 Juego juego = new Juego();
                 juego.setTitle("Bienvenido - "+TF_NombreUsuario.getText());
                 juego.setVisible(true);

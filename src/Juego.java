@@ -1,7 +1,9 @@
 
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,9 +16,14 @@ import javax.swing.JOptionPane;
  * @author emili
  */
 public class Juego extends javax.swing.JFrame {
+    Random random = new Random();
+    Login Login = new Login();
+    
     //Atributos
     ArrayList <Personaje> Personajes = new ArrayList();
     ArrayList <Arma> Armas = new ArrayList();
+    Date TiempoInicio;
+    Date TiempoFin;
     //Fin Atributos
     /**
      * Creates new form Juego
@@ -64,7 +71,7 @@ public class Juego extends javax.swing.JFrame {
         TA_Juego = new javax.swing.JTextArea();
         FTF_Index = new javax.swing.JFormattedTextField();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        BT_Atacar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -161,12 +168,19 @@ public class Juego extends javax.swing.JFrame {
         TA_Juego.setRows(5);
         jScrollPane1.setViewportView(TA_Juego);
 
+        FTF_Index.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("####"))));
+
         jLabel12.setFont(new java.awt.Font("Microsoft JhengHei", 1, 14)); // NOI18N
         jLabel12.setText("Indice a atacar");
 
-        jButton1.setBackground(new java.awt.Color(197, 30, 30));
-        jButton1.setText("Atacar");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BT_Atacar.setBackground(new java.awt.Color(197, 30, 30));
+        BT_Atacar.setText("Atacar");
+        BT_Atacar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BT_Atacar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BT_AtacarMouseClicked(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(0, 153, 255));
         jSeparator1.setOpaque(true);
@@ -186,7 +200,7 @@ public class Juego extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(FTF_Index, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BT_Atacar, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1032, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
@@ -202,7 +216,7 @@ public class Juego extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(FTF_Index, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel12)
-                        .addComponent(jButton1))
+                        .addComponent(BT_Atacar))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
@@ -430,8 +444,47 @@ public class Juego extends javax.swing.JFrame {
 
     private void BT_ComenzarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_ComenzarMouseClicked
         // TODO add your handling code here:
-        //TA_Juego.append();
+        Date TiempoInicio =  new Date();
+        
+        
+        TA_Juego.append("El Jugador: "+ Login + " ha ingresado a la partida");
+        
+        for (int i = 0; i < 61; i++) {
+        //ID
+            int ID = 1 + random.nextInt(1000);
+            while (Login.getIDs().contains(ID)) {
+                ID = 1 + random.nextInt(1000);
+            }
+            Login.getIDs().add(ID);
+        //Fin ID
+        
+        //Nombre
+            String Nombre = "";
+            int NombreSize = 5+random.nextInt(6);
+            for (int j = 0; j < NombreSize; j++) {
+                Nombre += (char) random.nextInt();
+            }
+        //Fin Nombre
+        
+        //Password
+            int PasswordSize = 5+random.nextInt(6);
+            char[] Password = new char[PasswordSize];
+            for (int j = 0; j < Password.length; j++) {
+                Password[j] = (char) random.nextInt();
+            }
+        //Fin Password    
+            Jugador Bot = new Jugador(Nombre, ID, Password);
+            Login.getUsuarios().add(Bot);
+            TA_Juego.append("El Jugador: "+ Bot + " ha ingresado a la partida");
+        }
+        
+        
     }//GEN-LAST:event_BT_ComenzarMouseClicked
+
+    private void BT_AtacarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BT_AtacarMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BT_AtacarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -469,6 +522,7 @@ public class Juego extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BT_Atacar;
     private javax.swing.JToggleButton BT_Comenzar;
     private javax.swing.JButton BT_CrearArma;
     private javax.swing.JButton BT_CrearPersonaje;
@@ -483,7 +537,6 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JTextArea TA_Juego;
     private javax.swing.JTextField TF_Arma_Nombre;
     private javax.swing.JTextField TF_Personaje_Nombre;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
