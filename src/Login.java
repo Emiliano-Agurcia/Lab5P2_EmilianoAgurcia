@@ -263,7 +263,7 @@ public class Login extends javax.swing.JFrame {
                 setVisible(false);
             }
         }else if(resp == 1){
-            
+            JOptionPane.showMessageDialog(this, "Acción Cancelada");
         }
         
     }//GEN-LAST:event_BT_NoRegistradoMouseClicked
